@@ -96,6 +96,7 @@ Please [read the document](doc/install.md) for details.
 ### Using CallbackList
 ```c++
 #include "eventpp/callbacklist.h"
+
 eventpp::CallbackList<void (const std::string &, const bool)> callbackList;
 callbackList.append([](const std::string & s, const bool b) {
     std::cout << std::boolalpha << "Got callback 1, s is " << s << " b is " << b << std::endl;
@@ -109,6 +110,7 @@ callbackList("Hello world", true);
 ### Using EventDispatcher
 ```c++
 #include "eventpp/eventdispatcher.h"
+
 eventpp::EventDispatcher<int, void ()> dispatcher;
 dispatcher.appendListener(3, []() {
     std::cout << "Got event 3." << std::endl;
@@ -127,6 +129,8 @@ dispatcher.dispatch(5);
 
 ### Using EventQueue
 ```c++
+#include "eventpp/eventqueue.h"
+
 eventpp::EventQueue<int, void (const std::string &, const bool)> queue;
 
 queue.appendListener(3, [](const std::string s, bool b) {
